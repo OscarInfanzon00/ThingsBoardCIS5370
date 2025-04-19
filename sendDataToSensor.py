@@ -25,6 +25,10 @@ def mqtt_publish_loop():
                 "temperature": celsius_to_fahrenheit(22.0 + (i % 2))
             }
 
+            # Calculate average air quality value
+
+            # Assuming telemetry contains CO2, PM2.5, and PM10
+            # If telemetry contains more than 3 values, adjust the average calculation accordingl
             avg_air_quality = average([telemetry["CO2"], telemetry["PM2.5"], telemetry["PM10"]])
             print(f"Average air quality value: {avg_air_quality:.2f}")
 
