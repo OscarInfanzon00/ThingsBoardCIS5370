@@ -7,6 +7,10 @@ from commonData import broker, username
 def celsius_to_fahrenheit(celsius):
     return (celsius * 9 / 5) + 32
 
+def average(values):
+    return sum(values) / len(values)
+
+
 def mqtt_publish_loop():
     client = TBDeviceMqttClient(broker, username=username)
     
@@ -20,6 +24,10 @@ def mqtt_publish_loop():
                 "PM10": 50 + (i % 7),
                 "temperature": celsius_to_fahrenheit(22.0 + (i % 2))
             }
+
+            avg_air_quality = average([telemetry["CO2"], telemetry["PM2.5"], telemetry["PM10"]])
+            print(f"Average air quality value: {avg_air_quality:.2f}")
+
             
             # Send telemetry and check delivery status
             result = client.send_telemetry(telemetry)
