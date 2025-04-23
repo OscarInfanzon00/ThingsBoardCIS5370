@@ -9,7 +9,7 @@ class RestClient:
         self.headers = {}
     
     def login(self, username, password):
-        # Send Login request with provided credentials
+        # Send Login request with the credentials
         payload = {"username": username, "password": password}
         response = requests.post(f"{self.base_url}/api/auth/login", json=payload)
         if response.status_code == 200:
@@ -19,7 +19,7 @@ class RestClient:
         return False
     
     def get_user(self):
-        # Retrieving the currently Logged-in user's profile info
+        # Retrieve the current Logged-in user's profile info
         return requests.get(f"{self.base_url}/api/auth/user", headers=self.headers).json()
     
     def get_allowed_permissions(self):
@@ -41,7 +41,7 @@ class RestClient:
             headers=self.headers).json()
     
     def get_user_role(self, user_id):
-        # Attempting to fetch the role/authority of a specified user
+        # Attempting to fetch the authority of a specified user
         try:
             return requests.get(f"{self.base_url}/api/user/{user_id}/authority", headers=self.headers).json()
         except Exception as e:

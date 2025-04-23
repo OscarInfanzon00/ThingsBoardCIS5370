@@ -47,12 +47,11 @@ class MainWindow:
                     # Fetch dashboards
                     dashboard_data = rest_client.get_user_dashboards(page_size=10, page=0)
 
-                    # Assuming `dashboard_data` is an instance of `PageDataDashboardInfo`
-                    # Access the `data` attribute directly, which should contain a list of dashboards
+                    # Access the data attribute directly which contain a list of dashboards
                     if hasattr(dashboard_data, 'data'):
-                        for dashboard in dashboard_data.data:  # Access the `data` attribute
-                            if dashboard.title == dashboard_name:  # Access `title` directly
-                                dashboard_id = dashboard.id.id  # Access `id` and then its `id` attribute
+                        for dashboard in dashboard_data.data:  # Access the data attribute
+                            if dashboard.title == dashboard_name:  # Access title directly
+                                dashboard_id = dashboard.id.id  # Access id and then its id attribute
                                 if dashboard_id:
                                     dashboard_url = f"{THINGSBOARD_HOST}/dashboards/all/{dashboard_id}"
                                     webbrowser.open_new_tab(dashboard_url)
@@ -71,7 +70,6 @@ class MainWindow:
             has_devices = bool(devices_data.get('data'))
             has_dashboards = bool(dashboards_data.get('data'))
 
-            # Clear any children in main_frame
             for widget in self.main_frame.winfo_children():
                 widget.destroy()
 
@@ -83,7 +81,7 @@ class MainWindow:
             notebook = ttk.Notebook(self.main_frame)
             notebook.pack(fill=tk.BOTH, expand=True, pady=10)
 
-            # Always show Sensor Data
+            # Always show Sensor Data no matter what role is it
             self.sensor_frame = ttk.Frame(notebook, padding="10")
             notebook.add(self.sensor_frame, text="Sensor Data")
             self.setup_sensor_tab()
@@ -111,7 +109,7 @@ class MainWindow:
             ttk.Label(user_frame, text=f"Role: {self.effective_role}", font=("Helvetica", 10)).pack(anchor="w")
             ttk.Label(user_frame, text=self.role_description(self.effective_role), wraplength=700).pack(anchor="w")
 
-            # Bottom buttons
+            # Logout 
             button_frame = ttk.Frame(self.main_frame)
             button_frame.pack(fill=tk.X, pady=5)
             ttk.Button(button_frame, text="Logout", command=self.logout).pack(side=tk.RIGHT)
@@ -166,7 +164,7 @@ class MainWindow:
         self.dashboard_tree.pack(fill=tk.BOTH, expand=True, pady=5, side=tk.LEFT)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-        # Bind double-click to open dashboard
+        # Bind double-click to open the dashboard
         self.dashboard_tree.bind("<Double-1>", self.open_selected_dashboard)
 
 
