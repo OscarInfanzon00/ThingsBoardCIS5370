@@ -6,4 +6,4 @@ DEVICE_ID = "90c8d380-10b9-11f0-8f83-43727cd6bc90"  # Replace with your device I
 
 # MQTT Configuration
 broker = "thingsboard.cloud"
-username = "pr4698IxqbGhZswGzJFv"  # Replace with your real device access token
+username = "pr4698IxqbGhZswGzJFv"  

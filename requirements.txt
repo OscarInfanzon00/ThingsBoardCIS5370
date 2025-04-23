@@ -1,0 +1,4 @@
+tkinter
+requests
+tb-rest-client
+tb-device-mqtt

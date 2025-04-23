@@ -52,7 +52,7 @@ This project implements a secure Role-Based Access Control (RBAC) system for IoT
 
 4. Run the virtual sensor simulator:
    ```
-   python sensor_simulator.py
+   python program.py
    ```
 
 ## Dashboard Configuration
