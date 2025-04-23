@@ -45,6 +45,7 @@ class LoginWindow:
         self.create_example_login(example_frame, "Customer", "Customer1@gmail.com", "12345678")
         self.create_example_login(example_frame, "Admin", "Admin1@gmail.com", "12345678")
 
+    # Clickable example login credentials
     def create_example_login(self, frame, role, email, password):
         label = ttk.Label(frame, text=f"{role} - {email} / {password}")
         label.pack(anchor="w")
